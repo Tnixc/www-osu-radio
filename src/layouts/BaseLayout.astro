@@ -5,15 +5,15 @@ import Footer from "@/components/global/Footer.astro";
 
 <html
   lang="en"
-  class="scroll-smooth bg-zinc-200 selection:bg-black selection:text-white"
+  class="scroll-smooth bg-zinc-200 selection:bg-fg selection:text-bg"
 >
   <head>
     <BaseHead />
   </head>
   <body
-    class="2xl:max-w-screen-xl relative mx-auto flex min-h-screen justify-center bg-zinc-200"
+    class="2xl:max-w-screen-xl relative mx-auto flex min-h-screen justify-center bg-bg text-fg"
   >
-    <main class="flex-grow max-w-[min(100vw,720px)] p-4">
+    <main class="flex-grow max-w-[min(100vw,720px)] p-4 shadow-sm rounded-2xl my-24">
       <slot />
       <Footer />
     </main>
