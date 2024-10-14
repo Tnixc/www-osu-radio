@@ -3,11 +3,5 @@
 @plugin "tailwind-scrollbar-hide";
 
 :root {
-  font-family: Inter, system-ui, ui-sans-serif, sans-serif;
-}
-
-@supports (font-variation-settings: normal) {
-  :root {
-    font-family: InterVariable, system-ui, ui-sans-serif, sans-serif;
-  }
+  font-family: Poppins, system-ui, ui-sans-serif, sans-serif;
 }
