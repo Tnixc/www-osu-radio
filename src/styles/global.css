@@ -1,32 +1,43 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: var(--accent);
-  --color-fg: var(--fg);
-  --color-bg: var(--bg);
+    --color-accent: var(--accent);
+    --color-fg: var(--fg);
+    --color-bg: var(--bg);
 }
 
 :root {
-  font-family: Poppins, system-ui, ui-sans-serif, sans-serif;
-  --accent: oklch(48.24% 0.2699 288);
-  --fg: oklch(7.65% 0.0222 267.88);
-  --bg: oklch(94.67% 0 277.41);
+    font-family: Poppins, system-ui, ui-sans-serif, sans-serif;
+    --accent: oklch(48.24% 0.2699 288);
+    --fg: oklch(7.65% 0.0222 267.88);
+    --bg: oklch(94.67% 0 277.41);
 }
-html,body{
-    background-color: var(--bg);
-}
+
+html,
 body {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='199' viewBox='0 0 100 199'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    background-color: #FFFFFF;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --accent: oklch(61.76% 0.2432 291.18);
-    --fg: oklch(92.01% 0.0187 267.88);
-    --bg: oklch(5.53% 0.0187 267.88);
-  }
 
-  body {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='199' viewBox='0 0 100 199'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.1'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
-  }
+    html,
+    body {
+        background-color: #000000;
+    }
+}
+
+body {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='199' viewBox='0 0 100 199'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --accent: oklch(61.76% 0.2432 291.18);
+        --fg: oklch(92.01% 0.0187 267.88);
+        --bg: oklch(5.53% 0.0187 267.88);
+    }
+
+    body {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='199' viewBox='0 0 100 199'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.1'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    }
 }
