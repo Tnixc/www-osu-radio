@@ -12,9 +12,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.0",
-    "@astrolib/seo": "^1.0.0-beta.8",
-    "@tailwindcss/typography": "^0.5.15",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "@astrolib/seo": "^1.0.0-beta.8"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.3",
