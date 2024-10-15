@@ -12,17 +12,9 @@
   --fg: oklch(7.65% 0.0222 267.88);
   --bg: oklch(94.67% 0 277.41);
 }
-
 html,
 body {
-  background-color: #ffffff;
-}
-
-@media (prefers-color-scheme: dark) {
-  html,
-  body {
-    background-color: #000000;
-  }
+  background-color: var(--bg);
 }
 
 body {
