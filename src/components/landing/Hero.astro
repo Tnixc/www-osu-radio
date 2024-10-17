@@ -1,20 +1,20 @@
 <section class="mx-auto flex w-fit max-w-full flex-col items-center">
-  <div class="scroll-snap-container">
+  <div class="scroll-snap-container scroll-smooth">
     <div class="scroll-snap-gallery">
       <img
         src="assets/0.webp"
         alt="full mockup"
-        class="scroll-snap-item rounded-xl"
+        class="scroll-snap-item rounded-2xl select-none p-1" draggable="false"
       />
       <img
         src="assets/1.webp"
         alt="closeup of panel selector"
-        class="scroll-snap-item rounded-xl"
+        class="scroll-snap-item rounded-2xl select-none p-1" draggable="false"
       />
       <img
         src="assets/2.webp"
         alt="closeup of player"
-        class="scroll-snap-item rounded-xl"
+        class="scroll-snap-item rounded-2xl select-none p-1" draggable="false"
       />
     </div>
   </div>
@@ -87,3 +87,78 @@
     </p>
   </div>
 </section>
+
+<script is:inline>
+const snapContainer = document.querySelector('.scroll-snap-container');
+
+let isDown = false;
+let startX;
+let scrollLeft;
+let animationFrameId;
+
+snapContainer.style.cursor = 'grab';
+
+snapContainer.addEventListener('mousedown', (e) => {
+  isDown = true;
+  snapContainer.classList.add('active');
+  snapContainer.style.cursor = 'grabbing';
+  snapContainer.style.scrollBehavior = 'auto';
+  snapContainer.style.scrollSnapType = 'none';
+  startX = e.pageX - snapContainer.offsetLeft;
+  scrollLeft = snapContainer.scrollLeft;
+});
+
+snapContainer.addEventListener('mouseleave', () => {
+  isDown = false;
+  snapContainer.style.cursor = 'grab';
+  smoothScrollToNearestSnapPoint();
+});
+
+snapContainer.addEventListener('mouseup', () => {
+  isDown = false;
+  snapContainer.style.cursor = 'grab';
+  smoothScrollToNearestSnapPoint();
+});
+
+snapContainer.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  snapContainer.style.cursor = 'grabbing';
+  const x = e.pageX - snapContainer.offsetLeft;
+  const walk = (x - startX) * 2;
+  snapContainer.scrollLeft = scrollLeft - walk;
+});
+
+function smoothScrollToNearestSnapPoint() {
+  cancelAnimationFrame(animationFrameId);
+
+  const itemWidth = snapContainer.querySelector('.scroll-snap-item').offsetWidth;
+  const targetScrollLeft = Math.round(snapContainer.scrollLeft / itemWidth) * itemWidth;
+
+  const startScrollLeft = snapContainer.scrollLeft;
+  const distance = targetScrollLeft - startScrollLeft;
+  const duration = 500; // milliseconds
+  let startTime;
+
+  function animate(currentTime) {
+    if (!startTime) startTime = currentTime;
+    const elapsedTime = currentTime - startTime;
+    const progress = Math.min(elapsedTime / duration, 1);
+    const easeProgress = easeOutCubic(progress);
+
+    snapContainer.scrollLeft = startScrollLeft + distance * easeProgress;
+
+    if (progress < 1) {
+      animationFrameId = requestAnimationFrame(animate);
+    } else {
+      snapContainer.style.scrollSnapType = 'x mandatory';
+    }
+  }
+
+  animationFrameId = requestAnimationFrame(animate);
+}
+
+function easeOutCubic(t) {
+  return 1 - Math.pow(1 - t, 4);
+}
+</script>
